@@ -1,72 +1,78 @@
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="./reminder.css">
-	</head>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./reminder.css">
+</head>
+<body>
+<div id="wrapper">
+
+	<header id="txt">Reminders&Tab;<a style="font-size: small; float: right" id="time"></a></header>
+
+
 	<body>
-		<div id="wrapper">
-			<header class="centered">Reminders</header>
-			<div id="editView" class="page hidden">
-				<input type="hidden" name="id" />
-				<div class="inputBox">
-					<span>Title</span>
-					<input name="title" type="text"/>
-				</div>
-				<div class="inputBox">
-						<span>Des.</span>
-						<textarea name="desc"></textarea>
-					</div>
-				<div class="inputBox">
-					<span>Time</span>
-					<input name="time" type="time"/>
-				</div>
-				<div id="dateHolder" class="inputBox hidden">
-					<span>Date</span>
-					<input name="date" type="date"/>
-				</div>
-				<label for="repeat">
-					Daily<input id="repeat" name="daily" type="checkbox">
-				</label>
-				<div class="actionBtns centered">
-					<span id="save">SAVE</span>
-					<span class="hidden" id="delete">DELETE</span>
-					<span id="cancel">CANCEL</span>
-				</div>
-			</div>
-			<div id="listView" class="page hidden">
-				<div class="centered listHeading">
-					Current Reminders
-					<span id="history">🕒</span>
-				</div>
-				<hr/>
-				<ul id="listViewULC"></ul>
-				<div class="actionBtns centered">
-					<span id="newReminder">NEW</span>
-				</div>
-			</div>
-			<div id="listViewO" class="page hidden">
-				<div class="centered listHeading">
-					<span id="back" class="">➜</span>
-					Old Reminders
-				</div>
-				<hr/>
-				<ul id="listViewULO"></ul>
-			</div>
+
+	<div id="editView" class="page hidden">
+		<input type="hidden" name="id" />
+		<div class="inputBox">
+			<span>Title</span>
+			<input name="title" type="text"/>
 		</div>
-		<template id="listitem">
-			<li>
-				<span class="lTitle" data-action="edit"></span>
-				<span class="action delete" data-action="delete">✖</span>
-				<span class="daily hidden">Daily</span>
-			</li>
-		</template>
-		<div class="hidden" id="overlay">
-			<div>
-				<p id="alertTxt"></p>
-				<button id="closeAlert">OK</button>
-			</div>
+
+		<div class="inputBox">
+			<span>Des.</span>
+			<textarea name="desc"></textarea>
 		</div>
-	</body>
-	<script src="./reminder.js"></script>
+		<div class="inputBox">
+			<span>Time</span>
+			<input name="time" type="time"/>
+		</div>
+		<div id="dateHolder" class="inputBox hidden">
+			<span>Date</span>
+			<input name="date" type="date"/>
+		</div>
+		<label for="repeat">
+			Daily<input id="repeat" name="daily" type="checkbox">
+		</label>
+		<div class="actionBtns centered">
+			<span id="save">SAVE</span>
+			<span class="hidden" id="delete">DELETE</span>
+			<span id="cancel">CANCEL</span>
+		</div>
+	</div>
+	<div id="listView" class="page hidden">
+		<div class="centered listHeading">
+			Current Reminders
+			<span id="history">🕒</span>
+		</div>
+		<hr/>
+		<ul id="listViewULC"></ul>
+		<div class="actionBtns centered">
+			<span id="newReminder">NEW</span>
+		</div>
+	</div>
+	<div id="listViewO" class="page hidden">
+		<div class="centered listHeading">
+			<span id="back" class="">➜</span>
+			History
+		</div>
+		<hr/>
+		<ul id="listViewULO"></ul>
+	</div>
+</div>
+<template id="listitem">
+	<li>
+		<span class="lTitle" data-action="edit"></span>
+		<span class="action delete" data-action="delete">✖</span>
+		<span class="daily hidden">Daily</span>
+	</li>
+</template>
+<div class="hidden" id="overlay">
+	<div>
+		<p id="alertTxt"></p>
+		<button id="closeAlert">OK</button>
+	</div>
+</div>
+</body>
+<script src="./reminder.js"></script>
 </html>
