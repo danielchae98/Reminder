@@ -32,19 +32,13 @@ const ele = {
 
 var myVar = setInterval(myTimer, 1000);
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 4cbe3d1f0aeae3480c3e18552c1d3685b5807295
 function myTimer() {
   var today = new Date();
   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   var dateTime = date+ " " + today.toLocaleTimeString()
   document.getElementById("time").innerHTML = dateTime;
-<<<<<<< HEAD
   return today.toLocaleTimeString();
-=======
->>>>>>> 4cbe3d1f0aeae3480c3e18552c1d3685b5807295
 }
 
 
