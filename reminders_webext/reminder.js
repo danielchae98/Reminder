@@ -32,11 +32,13 @@ const ele = {
 
 var myVar = setInterval(myTimer, 1000);
 
+
 function myTimer() {
   var today = new Date();
   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   var dateTime = date+ " " + today.toLocaleTimeString()
   document.getElementById("time").innerHTML = dateTime;
+  return today.toLocaleTimeString();
 }
 
 
@@ -97,6 +99,8 @@ const changePage = mode => {
 }
 
 const saveReminder = () => {
+  var dateD = new Date();
+  var n = dateD.toTimeString();
   const data = {
     title: ele.title.value || 'No title',
     desc: ele.desc.value || '',
@@ -111,6 +115,10 @@ const saveReminder = () => {
   }
   if (!data.daily && (!data.rDate || data.rDate == "")) {
     showAlert("No Date set");
+    return;
+  }
+  if (data.rTime <= n){
+    showAlert("Please set the correct time");
     return;
   }
   // send to BG
