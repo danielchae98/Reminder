@@ -6,6 +6,7 @@ const ele = {
   cancel: document.getElementById('cancel'),
   new: document.getElementById('newReminder'),
   edit: document.getElementById('editView'),
+  timer: document.getElementById('timerView'),
   list: document.getElementById('listView'),
   historylist: document.getElementById('listViewO'),
   title: document.querySelector('[name="title"]'),
@@ -21,7 +22,23 @@ const ele = {
   overlay: document.getElementById('overlay'),
   closeAlert: document.getElementById('closeAlert'),
   alertTxt: document.getElementById('alertTxt'),
+  timer: document.getElementById('time'),
 }
+// const showTimer = document.getElementById('getTime');
+// const holder = current ? ele.timer;
+// data.forEach(d => {
+//   if (current )
+// })
+
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var dateTime = date+ " " + today.toLocaleTimeString()
+  document.getElementById("time").innerHTML = dateTime;
+}
+
 
 const showAlert = msg => {
   ele.alertTxt.textContent = msg;
@@ -96,6 +113,10 @@ const saveReminder = () => {
     showAlert("No Date set");
     return;
   }
+  if(data.rTime || data.rDate >= Date){
+    showAlert("Please set a suitable time");
+    return;
+  }
   // send to BG
   browser.runtime.sendMessage({
     action: "create",
@@ -155,6 +176,7 @@ const emptyInputs = () => {
   ele.desc.value = '';
   handleDate();
 }
+
 
 const handleMessage = ({action, data, current}) => {
   switch(action) {
