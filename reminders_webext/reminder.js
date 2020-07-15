@@ -113,10 +113,6 @@ const saveReminder = () => {
     showAlert("No Date set");
     return;
   }
-  if(data.rTime || data.rDate >= Date){
-    showAlert("Please set a suitable time");
-    return;
-  }
   // send to BG
   browser.runtime.sendMessage({
     action: "create",
