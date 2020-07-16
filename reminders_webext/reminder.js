@@ -117,8 +117,16 @@ const saveReminder = () => {
     showAlert("No Date set");
     return;
   }
-  if (data.rTime <= n){
-    showAlert("Please set the correct time");
+  var year = data.rDate.substr(0,4);
+  var month = data.rDate.substr(5,2);
+  var date = data.rDate.substr(8,2);
+  var hours = data.rTime.substr(0, 2);
+  var minutes = data.rTime.substr(3,2);
+  month = parseInt(month) - 1;
+  var setTime = new Date(year, month, date, hours, minutes, 0);
+  var currentTime = new Date();
+  if (setTime < currentTime){
+    showAlert("Please set a valid timing for reminder");
     return;
   }
   // send to BG
