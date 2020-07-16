@@ -6,6 +6,7 @@ const ele = {
   cancel: document.getElementById('cancel'),
   new: document.getElementById('newReminder'),
   edit: document.getElementById('editView'),
+  timer: document.getElementById('timerView'),
   list: document.getElementById('listView'),
   historylist: document.getElementById('listViewO'),
   title: document.querySelector('[name="title"]'),
@@ -21,7 +22,25 @@ const ele = {
   overlay: document.getElementById('overlay'),
   closeAlert: document.getElementById('closeAlert'),
   alertTxt: document.getElementById('alertTxt'),
+  timer: document.getElementById('time'),
 }
+// const showTimer = document.getElementById('getTime');
+// const holder = current ? ele.timer;
+// data.forEach(d => {
+//   if (current )
+// })
+
+var myVar = setInterval(myTimer, 1000);
+
+
+function myTimer() {
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var dateTime = date+ " " + today.toLocaleTimeString()
+  document.getElementById("time").innerHTML = dateTime;
+  return today.toLocaleTimeString();
+}
+
 
 const showAlert = msg => {
   ele.alertTxt.textContent = msg;
@@ -80,6 +99,8 @@ const changePage = mode => {
 }
 
 const saveReminder = () => {
+  var dateD = new Date();
+  var n = dateD.toTimeString();
   const data = {
     title: ele.title.value || 'No title',
     desc: ele.desc.value || '',
@@ -94,6 +115,18 @@ const saveReminder = () => {
   }
   if (!data.daily && (!data.rDate || data.rDate == "")) {
     showAlert("No Date set");
+    return;
+  }
+  var year = data.rDate.substr(0,4);
+  var month = data.rDate.substr(5,2);
+  var date = data.rDate.substr(8,2);
+  var hours = data.rTime.substr(0, 2);
+  var minutes = data.rTime.substr(3,2);
+  month = parseInt(month) - 1;
+  var setTime = new Date(year, month, date, hours, minutes, 0);
+  var currentTime = new Date();
+  if (setTime < currentTime){
+    showAlert("Please set a valid timing for reminder");
     return;
   }
   // send to BG
@@ -155,6 +188,7 @@ const emptyInputs = () => {
   ele.desc.value = '';
   handleDate();
 }
+
 
 const handleMessage = ({action, data, current}) => {
   switch(action) {
