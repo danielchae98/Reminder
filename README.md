@@ -17,4 +17,15 @@ Demos for various JS functions also code repo for various webextensions submitte
 * reminders_webext - Storage API, Notification API, BrowserAlarms, BrowserAction
 * wordCount_webext - ContextMenu API, Notification API
 
-Reminders extension - add real timer on top of right corner, data validation on selected time and data
+
+##################
+Reminders extension will notify the user once times up, a small notification will pop out on the bottom of the screen 
+
+Version 1.2
+- Add  timer in the existing extension
+
+version 1.3
+- Improve the current system
+- Improve more accurate data validation on selected time and date 
+
+
