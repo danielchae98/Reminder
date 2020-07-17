@@ -18,7 +18,6 @@ Demos for various JS functions also code repo for various webextensions submitte
 * wordCount_webext - ContextMenu API, Notification API
 
 
-##################
 Reminders extension will notify the user once times up, a small notification will pop out on the bottom of the screen 
 
 Version 1.2
